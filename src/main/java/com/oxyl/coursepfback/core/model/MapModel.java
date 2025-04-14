@@ -6,6 +6,7 @@ public class MapModel {
     private int ligne;
     private int colonne;
     private String chemin_image;
+
     public MapModel(int id_map, int ligne, int colonne, String chemin_image) {
         this.id_map = id_map;
         this.ligne = ligne;
