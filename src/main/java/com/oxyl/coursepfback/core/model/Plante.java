@@ -1,21 +1,25 @@
 package com.oxyl.coursepfback.core.model;
 
 public class Plante {
-    private int id_plante;
+    private Long id_plante;
     private String nom;
-    private int points_de_vie;
-    private float attaque_par_seconde;
-    private int degat_attaque;
-    private int cout;
-    private float soleil_par_seconde;
+    private Integer points_de_vie;
+    private Double attaque_par_seconde;
+    private Integer degat_attaque;
+    private Integer cout;
+    private Double soleil_par_seconde;
     private Effet effet;
     private String chemin_image;
 
-    public Plante(int ed, String nom, int pointsDeVie, int puissanceAttaque, int degat_attaque, int cout, float soleil_par_seconde, String chemin_image) {
+    // Constructeurs
+
+    public Plante() {}
+
+    public Plante(Long ed, String nom, int pointsDeVie, Double attaque_par_seconde, int degat_attaque, int cout, Double soleil_par_seconde, Effet effet, String chemin_image) {
         this.id_plante = ed;
         this.nom = nom;
         this.points_de_vie = pointsDeVie;
-        this.attaque_par_seconde = puissanceAttaque;
+        this.attaque_par_seconde = attaque_par_seconde;
         this.degat_attaque = degat_attaque;
         this.cout = cout;
         this.soleil_par_seconde = soleil_par_seconde;
@@ -23,32 +27,78 @@ public class Plante {
         this.chemin_image = chemin_image;
     }
 
-    public int getId_plante() { return id_plante; }
-    public void setId_plante(int id_plante) { this.id_plante = id_plante; }
+    // Getters et Setters
+    public Long getIdPlante() {
+        return id_plante;
+    }
 
-    public String getNom() { return nom; }
-    public void setNom(String nom) { this.nom = nom; }
+    public void setIdPlante(Long idPlante) {
+        this.id_plante = idPlante;
+    }
 
-    public int getPoints_de_vie() { return points_de_vie; }
-    public void setPoints_de_vie(int points_de_vie) { this.points_de_vie = points_de_vie; }
+    public String getNom() {
+        return nom;
+    }
 
-    public float getAttaque_par_seconde() { return attaque_par_seconde; }
-    public void setAttaque_par_seconde(int attaque_par_seconde) { this.attaque_par_seconde = attaque_par_seconde; }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-    public int getDegat_attaque() { return degat_attaque; }
-    public void setDegat_attaque(int attaque) { this.degat_attaque = attaque; }
+    public Integer getPointDeVie() {
+        return points_de_vie;
+    }
 
-    public int getCout() { return cout; }
-    public void setCout(int cout) { this.cout = cout; }
+    public void setPointDeVie(Integer pointDeVie) {
+        this.points_de_vie = pointDeVie;
+    }
 
-    public float getSoleil_par_seconde() { return soleil_par_seconde; }
-    public void setSoleil_par_seconde(float soleil_par_seconde) {this.soleil_par_seconde = soleil_par_seconde; }
+    public Double getAttaqueParSeconde() {
+        return attaque_par_seconde;
+    }
 
-    public Effet getEffet() { return effet; }
-    public void setEffet(Effet effet) {this.effet = effet; }
+    public void setAttaqueParSeconde(Double attaqueParSeconde) {
+        this.attaque_par_seconde = attaqueParSeconde;
+    }
 
-    public String getChemin_image() { return chemin_image; }
-    public void setChemin_image(String chemin_image) {this.chemin_image = chemin_image; }
+    public Integer getDegatAttaque() {
+        return degat_attaque;
+    }
+
+    public void setDegatAttaque(Integer degatAttaque) {
+        this.degat_attaque = degatAttaque;
+    }
+
+    public Integer getCout() {
+        return cout;
+    }
+
+    public void setCout(Integer cout) {
+        this.cout = cout;
+    }
+
+    public Double getSoleilParSeconde() {
+        return soleil_par_seconde;
+    }
+
+    public void setSoleilParSeconde(Double soleilParSeconde) {
+        this.soleil_par_seconde = soleilParSeconde;
+    }
+
+    public Effet getEffet() {
+        return effet;
+    }
+
+    public void setEffet(Effet effet) {
+        this.effet = effet;
+    }
+
+    public String getCheminImage() {
+        return chemin_image;
+    }
+
+    public void setCheminImage(String cheminImage) {
+        this.chemin_image = cheminImage;
+    }
 
 
     @Override
