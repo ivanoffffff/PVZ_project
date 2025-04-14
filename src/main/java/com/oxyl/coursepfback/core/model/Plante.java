@@ -1,6 +1,6 @@
 package com.oxyl.coursepfback.core.model;
 
-public class PlanteModel {
+public class Plante {
     private int id_plante;
     private String nom;
     private int points_de_vie;
@@ -11,7 +11,7 @@ public class PlanteModel {
     private Effet effet;
     private String chemin_image;
 
-    public PlanteModel(int ed, String nom, int pointsDeVie, int puissanceAttaque, int degat_attaque, int cout, float soleil_par_seconde, String chemin_image) {
+    public Plante(int ed, String nom, int pointsDeVie, int puissanceAttaque, int degat_attaque, int cout, float soleil_par_seconde, String chemin_image) {
         this.id_plante = ed;
         this.nom = nom;
         this.points_de_vie = pointsDeVie;
