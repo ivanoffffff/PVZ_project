@@ -33,7 +33,7 @@ public class ZombieController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ZombieDTO> getZombieById(@PathVariable Long id) {
+    public ResponseEntity<ZombieDTO> getZombieById(@PathVariable("id") Long id) {
         try {
             Zombie zombie = zombieService.getZombieById(id);
             return ResponseEntity.ok(convertToDTO(zombie));
@@ -43,7 +43,7 @@ public class ZombieController {
     }
 
     @GetMapping("/map/{mapId}")
-    public ResponseEntity<List<ZombieDTO>> getZombiesByMapId(@PathVariable Long mapId) {
+    public ResponseEntity<List<ZombieDTO>> getZombiesByMapId(@PathVariable("mapId") Long mapId) {
         List<Zombie> zombies = zombieService.getZombiesByMapId(mapId);
         List<ZombieDTO> zombieDTOs = zombies.stream()
                 .map(this::convertToDTO)
@@ -63,7 +63,7 @@ public class ZombieController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ZombieDTO> updateZombie(@PathVariable Long id, @RequestBody ZombieDTO zombieDTO) {
+    public ResponseEntity<ZombieDTO> updateZombie(@PathVariable("id") Long id, @RequestBody ZombieDTO zombieDTO) {
         try {
             zombieDTO.setId(id); // Assurer que l'ID dans le DTO est celui du path
             Zombie zombie = convertToEntity(zombieDTO);
@@ -77,7 +77,7 @@ public class ZombieController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteZombie(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteZombie(@PathVariable("id") Long id) {
         try {
             zombieService.deleteZombie(id);
             return ResponseEntity.noContent().build();

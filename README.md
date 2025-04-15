@@ -2,92 +2,92 @@
 Ce projet est une implémentation backend d'une API REST pour un jeu inspiré de Plants vs Zombies, permettant la gestion des zombies, des plantes et des cartes via des opérations CRUD.
 ## Technologies utilisées
 
-Langage: Java 21
-Framework: Spring MVC
-Base de données: MySQL
-Outil d'accès aux données: JdbcTemplate
-Serveur d'application: Tomcat 10
-Gestion des dépendances: Maven
+Langage: Java 21<br />
+Framework: Spring MVC<br />
+Base de données: MySQL<br />
+Outil d'accès aux données: JdbcTemplate<br />
+Serveur d'application: Tomcat 10<br />
+Gestion des dépendances: Maven<br />
 
 ## Structure du projet
-Le projet suit une architecture en couches :
+Le projet suit une architecture en couches :<br />
 
-Modèles (core/model/) : Représentation des entités de la base de données
-DAOs (repository/) : Accès aux données via JdbcTemplate
-Services (core/Service/) : Logique métier
-DTOs (API/DTO/) : Objets de transfert de données pour l'API
-Contrôleurs (API/controller/) : Points d'entrée REST
+Modèles (core/model/) : Représentation des entités de la base de données<br />
+DAOs (repository/) : Accès aux données via JdbcTemplate<br />
+Services (core/Service/) : Logique métier<br />
+DTOs (API/DTO/) : Objets de transfert de données pour l'API<br />
+Contrôleurs (API/controller/) : Points d'entrée REST<br />
 
 ## Configuration
 Le projet est configuré pour utiliser une base de données MySQL locale. Les paramètres de connexion se trouvent dans la classe DatabaseConfig.
 ## Installation et déploiement
 
-Cloner le repository
-Configurer une base de données MySQL avec les scripts fournis (init.sql et values.sql)
-Configurer les paramètres de connexion dans DatabaseConfig.java
-Compiler le projet avec Maven : mvn clean package
-Déployer le WAR généré sur Tomcat
+Cloner le repository<br />
+Configurer une base de données MySQL avec les scripts fournis (init.sql et values.sql)<br />
+Configurer les paramètres de connexion dans DatabaseConfig.java<br />
+Compiler le projet avec Maven : mvn clean package<br />
+Déployer le WAR généré sur Tomcat<br />
 
 ## Endpoints API
 ### Zombies
 
-GET /api/zombies : Récupérer tous les zombies
-GET /api/zombies/{id} : Récupérer un zombie par son ID
-GET /api/zombies/map/{mapId} : Récupérer les zombies par carte
-POST /api/zombies : Créer un zombie
-PUT /api/zombies/{id} : Mettre à jour un zombie
-DELETE /api/zombies/{id} : Supprimer un zombie
+GET /api/zombies : Récupérer tous les zombies<br />
+GET /api/zombies/{id} : Récupérer un zombie par son ID<br />
+GET /api/zombies/map/{mapId} : Récupérer les zombies par carte<br />
+POST /api/zombies : Créer un zombie<br />
+PUT /api/zombies/{id} : Mettre à jour un zombie<br />
+DELETE /api/zombies/{id} : Supprimer un zombie<br />
 
 ### Plantes
 
-GET /api/plantes : Récupérer toutes les plantes
-GET /api/plantes/{id} : Récupérer une plante par son ID
-GET /api/plantes/effet/{effet} : Récupérer les plantes par effet
-POST /api/plantes : Créer une plante
-PUT /api/plantes/{id} : Mettre à jour une plante
-DELETE /api/plantes/{id} : Supprimer une plante
+GET /api/plantes : Récupérer toutes les plantes<br />
+GET /api/plantes/{id} : Récupérer une plante par son ID<br />
+GET /api/plantes/effet/{effet} : Récupérer les plantes par effet<br />
+POST /api/plantes : Créer une plante<br />
+PUT /api/plantes/{id} : Mettre à jour une plante<br />
+DELETE /api/plantes/{id} : Supprimer une plante<br />
 
 ### Maps
 
-GET /api/maps : Récupérer toutes les cartes
-GET /api/maps/{id} : Récupérer une carte par son ID
-POST /api/maps : Créer une carte
-PUT /api/maps/{id} : Mettre à jour une carte
-DELETE /api/maps/{id} : Supprimer une carte
+GET /api/maps : Récupérer toutes les cartes<br />
+GET /api/maps/{id} : Récupérer une carte par son ID<br />
+POST /api/maps : Créer une carte<br />
+PUT /api/maps/{id} : Mettre à jour une carte<br />
+DELETE /api/maps/{id} : Supprimer une carte<br />
 
 ## Modèles de données
 ### Zombie
-{
-  "id": 1,
-  "nom": "Zombie de base",
-  "pointDeVie": 100,
-  "attaqueParSeconde": 0.8,
-  "degatAttaque": 10,
-  "vitesseDeDeplacement": 0.5,
-  "cheminImage": "images/zombie/zombie.png",
-  "mapId": 1
+{<br />
+  "id": 1,<br />
+  "nom": "Zombie de base",<br />
+  "pointDeVie": 100,<br />
+  "attaqueParSeconde": 0.8,<br />
+  "degatAttaque": 10,<br />
+  "vitesseDeDeplacement": 0.5,<br />
+  "cheminImage": "images/zombie/zombie.png",<br />
+  "mapId": 1<br />
 }
 
 ### Plante
-{
-  "id": 1,
-  "nom": "Tournesol",
-  "pointDeVie": 100,
-  "attaqueParSeconde": 0.0,
-  "degatAttaque": 0,
-  "cout": 50,
-  "soleilParSeconde": 25.0,
-  "effet": "normal",
-  "cheminImage": "images/plante/tournesol.png"
-}
+{<br />
+  "id": 1,<br />
+  "nom": "Tournesol",<br />
+  "pointDeVie": 100,<br />
+  "attaqueParSeconde": 0.0,<br />
+  "degatAttaque": 0,<br />
+  "cout": 50,<br />
+  "soleilParSeconde": 25.0,<br />
+  "effet": "normal",<br />
+  "cheminImage": "images/plante/tournesol.png"<br />
+}<br />
 
 ### Map
-{
-  "id": 1,
-  "ligne": 5,
-  "colonne": 9,
-  "cheminImage": "images/map/gazon.png"
-}
+{<br />
+  "id": 1,<br />
+  "ligne": 5,<br />
+  "colonne": 9,<br />
+  "cheminImage": "images/map/gazon.png"<br />
+}<br />
 
 ## Auteur
 
