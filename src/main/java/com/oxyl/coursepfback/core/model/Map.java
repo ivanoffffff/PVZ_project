@@ -1,31 +1,65 @@
 package com.oxyl.coursepfback.core.model;
 
+import java.util.List;
+
 public class Map {
 
-    private int id_map;
-    private int ligne;
-    private int colonne;
+    private Long id_map;
+    private Integer ligne;
+    private Integer colonne;
     private String chemin_image;
+    private List<Zombie> zombies; // Relation avec Zombie (one-to-many)
 
-    public Map(int id_map, int ligne, int colonne, String chemin_image) {
+    // Constructeurs
+    public Map() {}
+
+    public Map(Long id_map, int ligne, int colonne, String chemin_image) {
         this.id_map = id_map;
         this.ligne = ligne;
         this.colonne = colonne;
          this.chemin_image = chemin_image;
     }
 
-    public int getId() { return id_map; }
-    public void setId(int id) { this.id_map = id; }
+    // Getters et Setters
+    public Long getIdMap() {
+        return id_map;
+    }
 
-    public int getLigne() { return ligne; }
-    public void setNom(int ligne) { this.ligne = ligne; }
+    public void setIdMap(Long idMap) {
+        this.id_map = idMap;
+    }
 
-    public int getColonne() { return colonne; }
-    public void setColonne(int colonne) { this.colonne = colonne; }
+    public Integer getLigne() {
+        return ligne;
+    }
 
-    public String getChemin_image() { return chemin_image; }
-    public void setChemin_image(String chemin_image) { this.chemin_image = chemin_image; }
+    public void setLigne(Integer ligne) {
+        this.ligne = ligne;
+    }
 
+    public Integer getColonne() {
+        return colonne;
+    }
+
+    public void setColonne(Integer colonne) {
+        this.colonne = colonne;
+    }
+
+    public String getCheminImage() {
+        return chemin_image;
+    }
+
+    public void setCheminImage(String cheminImage) {
+        this.chemin_image = cheminImage;
+    }
+
+    public List<Zombie> getZombies() {
+        return zombies;
+    }
+
+    public void setZombies(List<Zombie> zombies) {
+        this.zombies = zombies;
+    }
 
     @Override
     public String toString() {
