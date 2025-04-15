@@ -34,7 +34,7 @@ public class PlanteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PlanteDTO> getPlanteById(@PathVariable Long id) {
+    public ResponseEntity<PlanteDTO> getPlanteById(@PathVariable("id") Long id) {
         try {
             Plante plante = planteService.getPlanteById(id);
             return ResponseEntity.ok(convertToDTO(plante));
@@ -44,7 +44,7 @@ public class PlanteController {
     }
 
     @GetMapping("/effet/{effet}")
-    public ResponseEntity<List<PlanteDTO>> getPlantesByEffet(@PathVariable String effet) {
+    public ResponseEntity<List<PlanteDTO>> getPlantesByEffet(@PathVariable("effet") String effet) {
         List<Plante> plantes = planteService.getPlantesByEffet(effet);
         List<PlanteDTO> planteDTOs = plantes.stream()
                 .map(this::convertToDTO)
@@ -64,7 +64,7 @@ public class PlanteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PlanteDTO> updatePlante(@PathVariable Long id, @RequestBody PlanteDTO planteDTO) {
+    public ResponseEntity<PlanteDTO> updatePlante(@PathVariable("id") Long id, @RequestBody PlanteDTO planteDTO) {
         try {
             planteDTO.setId(id); // Assurer que l'ID dans le DTO est celui du path
             Plante plante = convertToEntity(planteDTO);
@@ -78,7 +78,7 @@ public class PlanteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePlante(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePlante(@PathVariable("id") Long id) {
         try {
             planteService.deletePlante(id);
             return ResponseEntity.noContent().build();

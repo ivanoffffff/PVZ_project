@@ -36,7 +36,7 @@ public class MapController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MapDTO> getMapById(@PathVariable Long id) {
+    public ResponseEntity<MapDTO> getMapById(@PathVariable("id") Long id) {
         try {
             Map map = mapService.getMapById(id);
             return ResponseEntity.ok(convertToDTO(map));
@@ -57,7 +57,7 @@ public class MapController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MapDTO> updateMap(@PathVariable Long id, @RequestBody MapDTO mapDTO) {
+    public ResponseEntity<MapDTO> updateMap(@PathVariable("id") Long id, @RequestBody MapDTO mapDTO) {
         try {
             mapDTO.setId(id); // Assurer que l'ID dans le DTO est celui du path
             Map map = convertToEntity(mapDTO);
@@ -71,7 +71,7 @@ public class MapController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteMap(@PathVariable Long id) {
+    public ResponseEntity<String> deleteMap(@PathVariable("id") Long id) {
         try {
             mapService.deleteMap(id);
             return ResponseEntity.noContent().build();
