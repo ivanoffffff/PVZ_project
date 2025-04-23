@@ -1,6 +1,9 @@
 package com.oxyl.coursepfback.API.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ZombieDTO {
+    @JsonProperty("id_zombie")
     private Long id;
     private String nom;
     private Integer pointDeVie;

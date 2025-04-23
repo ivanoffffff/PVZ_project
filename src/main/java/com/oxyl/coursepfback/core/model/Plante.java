@@ -15,8 +15,8 @@ public class Plante {
 
     public Plante() {}
 
-    public Plante(Long ed, String nom, int pointsDeVie, Double attaque_par_seconde, int degat_attaque, int cout, Double soleil_par_seconde, Effet effet, String chemin_image) {
-        this.id_plante = ed;
+    public Plante(Long id, String nom, int pointsDeVie, Double attaque_par_seconde, int degat_attaque, int cout, Double soleil_par_seconde, Effet effet, String chemin_image) {
+        this.id_plante = id;
         this.nom = nom;
         this.points_de_vie = pointsDeVie;
         this.attaque_par_seconde = attaque_par_seconde;
@@ -104,10 +104,10 @@ public class Plante {
     @Override
     public String toString() {
         return "Plante{" +
-                "id=" + id_plante +
+                "id_plante=" + id_plante +
                 ", nom='" + nom + '\'' +
-                ", pointsDeVie=" + points_de_vie +
-                ", puissanceAttaque=" + attaque_par_seconde +
+                ", points_de_vie=" + points_de_vie +
+                ", attaque_par_seconde=" + attaque_par_seconde +
                 '}';
     }
 }

@@ -64,10 +64,10 @@ public class Map {
     @Override
     public String toString() {
         return "Map{" +
-                "id=" + id_map +
+                "id_map=" + id_map +
                 ", ligne='" + ligne + '\'' +
                 ", colonne=" + colonne +
-                ", img=" + chemin_image +
+                ", chemin_image=" + chemin_image +
                 '}';
     }
 }

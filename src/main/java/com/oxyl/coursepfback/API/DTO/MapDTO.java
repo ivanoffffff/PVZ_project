@@ -1,8 +1,11 @@
 package com.oxyl.coursepfback.API.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class MapDTO {
+    @JsonProperty("id_map")
     private Long id;
     private Integer ligne;
     private Integer colonne;

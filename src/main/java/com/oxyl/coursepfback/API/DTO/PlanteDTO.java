@@ -1,11 +1,13 @@
 package com.oxyl.coursepfback.API.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.oxyl.coursepfback.core.model.Effet;
 
 public class PlanteDTO {
-    private Long id;
+    @JsonProperty("id_plante")
+    private Long id_plante;
     private String nom;
-    private Integer pointDeVie;
+    private Integer point_de_vie;
     private Double attaqueParSeconde;
     private Integer degatAttaque;
     private Integer cout;
@@ -19,9 +21,9 @@ public class PlanteDTO {
     public PlanteDTO(Long id, String nom, Integer pointDeVie, Double attaqueParSeconde,
                      Integer degatAttaque, Integer cout, Double soleilParSeconde,
                      String effet, String cheminImage) {
-        this.id = id;
+        this.id_plante = id;
         this.nom = nom;
-        this.pointDeVie = pointDeVie;
+        this.point_de_vie = pointDeVie;
         this.attaqueParSeconde = attaqueParSeconde;
         this.degatAttaque = degatAttaque;
         this.cout = cout;
@@ -32,11 +34,11 @@ public class PlanteDTO {
 
     // Getters et Setters
     public Long getId() {
-        return id;
+        return id_plante;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.id_plante = id;
     }
 
     public String getNom() {
@@ -48,11 +50,11 @@ public class PlanteDTO {
     }
 
     public Integer getPointDeVie() {
-        return pointDeVie;
+        return point_de_vie;
     }
 
     public void setPointDeVie(Integer pointDeVie) {
-        this.pointDeVie = pointDeVie;
+        this.point_de_vie = pointDeVie;
     }
 
     public Double getAttaqueParSeconde() {
