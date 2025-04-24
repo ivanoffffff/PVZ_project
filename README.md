@@ -58,35 +58,35 @@ DELETE /api/maps/{id} : Supprimer une carte<br />
 ## Modèles de données
 ### Zombie
 {<br />
-  "id": 1,<br />
+  "id_zombie": 1,<br />
   "nom": "Zombie de base",<br />
-  "pointDeVie": 100,<br />
-  "attaqueParSeconde": 0.8,<br />
-  "degatAttaque": 10,<br />
-  "vitesseDeDeplacement": 0.5,<br />
-  "cheminImage": "images/zombie/zombie.png",<br />
-  "mapId": 1<br />
+  "point_de_vie": 100,<br />
+  "attaque_par_seconde": 0.8,<br />
+  "degat_attaque": 10,<br />
+  "vitesse_de_deplacement": 0.5,<br />
+  "chemin_image": "images/zombie/zombie.png",<br />
+  "id_map": 1<br />
 }
 
 ### Plante
 {<br />
-  "id": 1,<br />
+  "id_plante": 1,<br />
   "nom": "Tournesol",<br />
-  "pointDeVie": 100,<br />
-  "attaqueParSeconde": 0.0,<br />
-  "degatAttaque": 0,<br />
+  "point_de_vie": 100,<br />
+  "attaque_par_seconde": 0.0,<br />
+  "degat_dttaque": 0,<br />
   "cout": 50,<br />
-  "soleilParSeconde": 25.0,<br />
+  "soleil_par_seconde": 25.0,<br />
   "effet": "normal",<br />
-  "cheminImage": "images/plante/tournesol.png"<br />
+  "chemin_image": "images/plante/tournesol.png"<br />
 }<br />
 
 ### Map
 {<br />
-  "id": 1,<br />
+  "id_map": 1,<br />
   "ligne": 5,<br />
   "colonne": 9,<br />
-  "cheminImage": "images/map/gazon.png"<br />
+  "chemin_image": "images/map/gazon.png"<br />
 }<br />
 
 ## Auteur
