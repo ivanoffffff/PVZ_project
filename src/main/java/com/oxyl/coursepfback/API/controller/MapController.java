@@ -57,17 +57,23 @@ public class MapController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MapDTO> updateMap(@PathVariable("id") Long id, @RequestBody MapDTO mapDTO) {
-        try {
-            mapDTO.setId(id); // Assurer que l'ID dans le DTO est celui du path
-            Map map = convertToEntity(mapDTO);
-            Map updatedMap = mapService.updateMap(map);
-            return ResponseEntity.ok(convertToDTO(updatedMap));
-        } catch (RuntimeException e) {
+    public ResponseEntity<MapDTO> updateMap(@PathVariable("id") Long id, @RequestBody MapDTO updatedMapDTO) {
+        Map existingMap = mapService.getMapById(id);
+        if (existingMap == null) {
             return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
         }
+        if (updatedMapDTO.getLigne() != null) {
+            existingMap.setLigne(updatedMapDTO.getLigne());
+        }
+        if (updatedMapDTO.getColonne() != null) {
+            existingMap.setColonne(updatedMapDTO.getColonne());
+        }
+        if (updatedMapDTO.getCheminImage() != null) {
+            existingMap.setCheminImage(updatedMapDTO.getCheminImage());
+        }
+        Map savedMap = mapService.updateMap(existingMap);
+        MapDTO responseDTO = convertToDTO(savedMap);
+        return ResponseEntity.ok(responseDTO);
     }
 
     @DeleteMapping("/{id}")

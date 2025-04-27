@@ -97,19 +97,7 @@ public class ZombieController {
 
         // Save the updated zombie
         Zombie savedZombie = zombieService.updateZombie(existingZombie);
-
-        // Convert the entity to DTO for response
-        ZombieDTO responseDTO = new ZombieDTO(
-                savedZombie.getId(),
-                savedZombie.getNom(),
-                savedZombie.getPoints_de_vie(),
-                savedZombie.getAttaque_par_seconde(),
-                savedZombie.getDegat_attaque(),
-                savedZombie.getVitesse_de_deplacement(),
-                savedZombie.getChemin_image(),
-                savedZombie.getMap() != null ? savedZombie.getMap().getIdMap() : null
-        );
-
+        ZombieDTO responseDTO = convertToDTO(savedZombie);
         return ResponseEntity.ok(responseDTO);
     }
 
