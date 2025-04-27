@@ -64,17 +64,39 @@ public class PlanteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PlanteDTO> updatePlante(@PathVariable("id") Long id, @RequestBody PlanteDTO planteDTO) {
-        try {
-            planteDTO.setId(id); // Assurer que l'ID dans le DTO est celui du path
-            Plante plante = convertToEntity(planteDTO);
-            Plante updatedPlante = planteService.updatePlante(plante);
-            return ResponseEntity.ok(convertToDTO(updatedPlante));
-        } catch (RuntimeException e) {
+    public ResponseEntity<PlanteDTO> updatePlante(@PathVariable("id") Long id, @RequestBody PlanteDTO updatedPlanteDTO) {
+        Plante existingPlante = planteService.getPlanteById(id);
+
+        if (existingPlante == null) {
             return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
         }
+        if (updatedPlanteDTO.getNom() != null) {
+            existingPlante.setNom(updatedPlanteDTO.getNom());
+        }
+        if(updatedPlanteDTO.getEffet() != null) {
+            existingPlante.setEffet(Effet.valueOf(updatedPlanteDTO.getEffet().toUpperCase().replace(" ", "_")));
+        }
+        if(updatedPlanteDTO.getAttaqueParSeconde() != null) {
+            existingPlante.setAttaqueParSeconde(updatedPlanteDTO.getAttaqueParSeconde());
+        }
+        if(updatedPlanteDTO.getPointDeVie()!= null) {
+            existingPlante.setPointDeVie(updatedPlanteDTO.getPointDeVie());
+        }
+        if(updatedPlanteDTO.getDegatAttaque() != null) {
+            existingPlante.setDegatAttaque(updatedPlanteDTO.getDegatAttaque());
+        }
+        if(updatedPlanteDTO.getCout() != null) {
+            existingPlante.setCout(updatedPlanteDTO.getCout());
+        }
+        if(updatedPlanteDTO.getSoleilParSeconde() != null) {
+            existingPlante.setSoleilParSeconde(updatedPlanteDTO.getSoleilParSeconde());
+        }
+        if(updatedPlanteDTO.getCheminImage() != null) {
+            existingPlante.setCheminImage(updatedPlanteDTO.getCheminImage());
+        }
+        Plante savedPlante = planteService.updatePlante(existingPlante);
+        PlanteDTO responseDTO = convertToDTO(savedPlante);
+        return ResponseEntity.ok(responseDTO);
     }
 
     @DeleteMapping("/{id}")

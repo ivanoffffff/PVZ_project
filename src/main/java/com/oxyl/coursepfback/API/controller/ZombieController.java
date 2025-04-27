@@ -2,6 +2,7 @@ package com.oxyl.coursepfback.API.controller;
 
 import com.oxyl.coursepfback.API.DTO.ZombieDTO;
 import com.oxyl.coursepfback.core.Service.ZombieService;
+import com.oxyl.coursepfback.core.model.Map;
 import com.oxyl.coursepfback.core.model.Zombie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -63,17 +64,53 @@ public class ZombieController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ZombieDTO> updateZombie(@PathVariable("id") Long id, @RequestBody ZombieDTO zombieDTO) {
-        try {
-            zombieDTO.setId(id); // Assurer que l'ID dans le DTO est celui du path
-            Zombie zombie = convertToEntity(zombieDTO);
-            Zombie updatedZombie = zombieService.updateZombie(zombie);
-            return ResponseEntity.ok(convertToDTO(updatedZombie));
-        } catch (RuntimeException e) {
+    public ResponseEntity<ZombieDTO> updateZombie(@PathVariable("id") Long id, @RequestBody ZombieDTO updatedZombieDTO) {
+        // Fetch the existing zombie - changed type to match service return type
+        Zombie existingZombie = zombieService.getZombieById(id);
+
+        if (existingZombie == null) {
             return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
         }
+
+        // Update only the non-null fields from the request
+        if (updatedZombieDTO.getNom() != null) {
+            existingZombie.setNom(updatedZombieDTO.getNom());
+        }
+        if (updatedZombieDTO.getPointDeVie() != null) {
+            existingZombie.setPoints_de_vie(updatedZombieDTO.getPointDeVie());
+        }
+        if (updatedZombieDTO.getAttaqueParSeconde() != null) {
+            existingZombie.setAttaque_par_seconde(updatedZombieDTO.getAttaqueParSeconde());
+        }
+        if (updatedZombieDTO.getDegatAttaque() != null) {
+            existingZombie.setDegat_attaque(updatedZombieDTO.getDegatAttaque());
+        }
+        if (updatedZombieDTO.getVitesseDeDeplacement() != null) {
+            existingZombie.setVitesse_de_deplacement(updatedZombieDTO.getVitesseDeDeplacement());
+        }
+        if (updatedZombieDTO.getCheminImage() != null) {
+            existingZombie.setChemin_image(updatedZombieDTO.getCheminImage());
+        }
+        if (updatedZombieDTO.getMapId() != null) {
+            existingZombie.setId_map(updatedZombieDTO.getMapId());
+        }
+
+        // Save the updated zombie
+        Zombie savedZombie = zombieService.updateZombie(existingZombie);
+
+        // Convert the entity to DTO for response
+        ZombieDTO responseDTO = new ZombieDTO(
+                savedZombie.getId(),
+                savedZombie.getNom(),
+                savedZombie.getPoints_de_vie(),
+                savedZombie.getAttaque_par_seconde(),
+                savedZombie.getDegat_attaque(),
+                savedZombie.getVitesse_de_deplacement(),
+                savedZombie.getChemin_image(),
+                savedZombie.getMap() != null ? savedZombie.getMap().getIdMap() : null
+        );
+
+        return ResponseEntity.ok(responseDTO);
     }
 
     @DeleteMapping("/{id}")

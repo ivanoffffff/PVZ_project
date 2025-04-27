@@ -5,13 +5,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ZombieDTO {
     @JsonProperty("id_zombie")
     private Long id;
+
+    @JsonProperty("nom")
     private String nom;
+
+    @JsonProperty("point_de_vie")
     private Integer pointDeVie;
+
+    @JsonProperty("attaque_par_seconde")
     private Double attaqueParSeconde;
+
+    @JsonProperty("degat_attaque")
     private Integer degatAttaque;
+
+    @JsonProperty("vitesse_de_deplacement")
     private Double vitesseDeDeplacement;
+
+    @JsonProperty("chemin_image")
     private String cheminImage;
-    private Long mapId;
+
+    @JsonProperty("id_map")
+    private Long idMap;
 
     // Constructeurs
     public ZombieDTO() {}
@@ -26,7 +40,20 @@ public class ZombieDTO {
         this.degatAttaque = degatAttaque;
         this.vitesseDeDeplacement = vitesseDeDeplacement;
         this.cheminImage = cheminImage;
-        this.mapId = mapId;
+        this.idMap= mapId;
+    }
+
+    public ZombieDTO(Long id, String nom, Integer pointDeVie, Double attaqueParSeconde,
+                     Integer degatAttaque, Double vitesseDeDeplacement,
+                     String cheminImage) {
+        this.id = id;
+        this.nom = nom;
+        this.pointDeVie = pointDeVie;
+        this.attaqueParSeconde = attaqueParSeconde;
+        this.degatAttaque = degatAttaque;
+        this.vitesseDeDeplacement = vitesseDeDeplacement;
+        this.cheminImage = cheminImage;
+        this.idMap = null;
     }
 
     // Getters et Setters
@@ -87,10 +114,10 @@ public class ZombieDTO {
     }
 
     public Long getMapId() {
-        return mapId;
+        return idMap;
     }
 
     public void setMapId(Long mapId) {
-        this.mapId = mapId;
+        this.idMap = mapId;
     }
 }
